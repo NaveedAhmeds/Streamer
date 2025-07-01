@@ -1,0 +1,10 @@
+#container {
+  border: 2px solid;
+  height: 100px;
+}
+
+.card img {
+  border: 2px solid;
+  height: 300px;
+  width: 500px;
+}

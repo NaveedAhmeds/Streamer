@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adding artists</title>
+    <link rel="stylesheet" href="water.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <h1>Add an Artist?</h1>
+    <h5>We've got ya.<span onclick="easter()" id="Easter">.</span>!</h5>
+    <hr />
+    <div class="artistdetails">
+      <h3>Artist details</h3>
+      <form
+        action="https://httpbin.org/post"
+        method="POST"
+        class="Artists"
+        id="form"
+      >
+        <div class="ArtistName">
+          <label for="artName">Artist Name: </label>
+          <input
+            type="text"
+            name="Artist-name"
+            id="artName"
+            placeholder="Artist Name"
+            required
+          />
+        </div>
+        <div class="musicgenre">
+          <label for="music">Genre:</label>
+          <input id="music" placeholder="Genre" name="Genre" list="genres" />
+          <datalist id="genres">
+            <option value="EDM">Beats</option>
+            <option value="K-pop"></option>
+            <option value="Instrumental"></option>
+            <option value="Karoke"></option>
+            <option value="Rock"></option>
+            <option value="Heavy Metal"></option>
+            <option value="Pop Music"></option>
+            <option value="Jazz"></option>
+            <option value="Rhythm and Blues"></option>
+            <option value="Hip Hop"></option>
+          </datalist>
+        </div>
+        <div class="Artist-Social">
+          <label for="artName">Artist Social: </label>
+          <input
+            type="text"
+            name="Artist-Social"
+            id="artName"
+            placeholder="Socials"
+            required
+          />
+        </div>
+        <div class="SongName">
+          <label for="Songs">Song Name: </label>
+          <input
+            type="text"
+            name="songName"
+            id="SongsName"
+            placeholder="Song Name"
+            required
+          />
+        </div>
+        <div class="SongUrl">
+          <label for="Songs">Song Url: </label>
+          <input
+            type="text"
+            name="url"
+            id="Songs"
+            placeholder="Song Url"
+            required
+          />
+        </div>
+        <div class="checkbox">
+          <label for="checkbx">Explicit?</label>
+          <input type="checkbox" name="Explicit" />
+        </div>
+        <div class="desc">
+          <label for="desc"
+            >Describe why you think this song should be added?</label
+          >
+          <input
+            type="text"
+            id="desc"
+            name="Desc"
+            placeholder="Your thoughts..."
+          />
+        </div>
+        <button type="submit">Add Artist</button>
+      </form>
+      <div class="more" id="more">
+        <h3>Add Additional</h3>
+        <button onclick="add()">Add song</button>
+        <button onclick="addSocial()">Add Social</button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function add() {
+      const division = document.getElementById("form");
+      const newDiv = document.createElement("div");
+      newDiv.className = "additionalSong";
+      newDiv.id = "additionalSong";
+      const newLabel = document.createElement("label");
+      newLabel.setAttribute("for", "additionalSongUrl");
+      newLabel.textContent = "Additional Song Url: ";
+      const newBox = document.createElement("input");
+      newBox.type = "url";
+      newBox.id = "additionalSongUrl";
+      newBox.name = "additionalSongUrl";
+      newBox.placeholder = "Additional Song Url";
+
+      newDiv.appendChild(newLabel);
+      newDiv.appendChild(newBox);
+      division.appendChild(newDiv);
+    }
+
+    function addSocial() {
+      const division = document.getElementById("form");
+      const newDiv = document.createElement("div");
+      newDiv.className = "additionalSocial";
+      newDiv.id = "additionalSocial";
+      newDiv.id = "additionalSocial";
+      const newLabel = document.createElement("label");
+      //   newLabel.setAttribute("for", "additionalSocial");
+      //   newLabel.textContent = "Additional Social Url: ";
+      const newBox = document.createElement("input");
+      newBox.type = "url";
+      newBox.id = "additionalSocialUrl";
+      newBox.name = "additionalSocialUrl";
+      newBox.placeholder = "Additional Social Url";
+
+      //   newDiv.appendChild(newLabel);
+      newDiv.appendChild(newBox);
+      division.appendChild(newDiv);
+
+      const btn = document.getElementById("additionalSocial");
+
+      // Add the class 'BtnAdded' to the element
+      btn.classList.add("BtnAdded");
+      const bttn = document.createElement("button");
+      bttn.textContent = "Delete";
+      const i = document.createElement("i");
+      i.classList = "fa fa-trash-can";
+      bttn.addEventListener("click", rmvsoc);
+
+      bttn.appendChild(i);
+      btn.appendChild(bttn);
+    }
+
+    function rmvsoc() {
+      const form = document.getElementById("additionalSocial");
+      form.remove();
+      // const del = document.getElementById("socialBtn");
+      // del.remove();
+    }
+
+    function easter() {
+      window.location.href =
+        "https://static.wikia.nocookie.net/silly-cat/images/1/19/Thumbs_Up.png/revision/latest?cb=20231201204731";
+    }
+  </script>
+</html>
